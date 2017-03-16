@@ -1,0 +1,145 @@
+<!-- Autor: Scott Thomas Heston Aclaración de fuentes intelectuales: para la realización de este trabajo
+se ha consultado la documentación D3, disponible en https://d3js.org/#introduction y la colección de videos "d3.js Tutorials"
+disponible en https://www.youtube.com/playlist?list=PL6il2r9i3BqH9PmbOf5wA5E1wOG3FT22p, la documentación en https://www.w3schools.com
+y la siguiente stackoverflow http://stackoverflow.com/questions/31369347/how-to-get-dynamical-value-of-input-element-by-d3 -->
+
+<!doctype html>
+<html>
+
+<head>
+    <title>Wordcloud con captura de texto</title>
+    <script src="https://d3js.org/d3.v4.min.js"> </script>
+    <!-- Notar que src es *attr.* de script-->
+    <style>
+    /* p = pares */
+    span.p {
+      color: #222;
+    }
+
+    /* i = impares */
+    span.i {
+      color: #888;
+    }
+</style>
+</head>
+
+<body style="width:600px;">
+    <p> Esta pagina captura texto y genera un wordcloud seg&uacute;n la frecuencia
+    de uso de cada palabra y/u orden alfab&eacute;tico (excluyendo unas de las palabras más comunes del idioma castellano). <br/>
+    </p>
+    <form>
+        <textarea id="myTextArea" cols="40" style="height:200px; width:600px">D3.js (o simplemente D3 por las siglas de Data-Driven Documents) es una librería de JavaScript para producir, a partir de datos, infogramas dinámicos e interactivos en navegadores web. Hace uso de tecnologías bien sustentadas como SVG, HTML5, y CSS. Esta librería es sucesora de la librería Protovis. En contraste con muchas otras librerías, D3.js permite tener control completo sobre el resultado visual final. La primera versión de la librería fue distribuida agosto de 2011. Embebido dentro de una página web de HTML, la librería D3.js utiliza funciones JavaScript predefinidas construidas para seleccionar elementos, crea objetos SVG, les da estilo, o añade transiciones, efectos dinámicos o les agrega información. A estos objetos también se les puede apicar estilos utilizando CSS. Grande grupos de datos pueden ser fácilmente asociados a objetos SVG de forma sencilla con funciones de D3.js para generar textos extendidos o infogramas elaborados. Los datos pueden tender formatos variados, más generalmente JSON, CSV o geoJSON, aunque cuando hace falta, se puede escribir otras funciones JavaScript para la captura de otros formatos de datos. El principio central del diseño de D3.js es habilitar al programador para que utilice preferentemente selectores al estilo de CSS para seleccionar elementos del Modelo de objeto del documento (DOM), luego aplicar operadores para manipularl los elementos seleccionados de una manera similar a jQuery.6 Por ejemplo, con D3.js, se puede seleccionar todos los párrafos HTML (segmentos de la forma <p>...</p>) y cambiarles su color de texto, p. ej. a color lavanda (lavender): La selección puede estar basada en etiqueta (como en el ejemplo anterior), en clases, en identificadores, en atributos, o en ubicación en la jerarquía. Una vez los elementos son seleccionados, se puede aplicar operaciones sobre ellos, incluyendo consultar y cambiar atributos, mostrar textos, y cambiar estilos (como en el ejemplo anterior). Se puede también agregar o eliminar elementos. Este proceso de crear, modificar y eliminar elementos HTML puede hacerse dependiente de los datos, lo cual es el concepto básico de D3.js.
+(Fuente de contenido por omisi&oacute;n: Wikipedia)</textarea>
+        <!-- style="height:200px": forma CSS de un atributo-->
+        <!-- <input name="generarWordCloud" type="submit" value=> <> -->
+        <input name="sort" id="alfa" type="radio"> Ordenar alfab&eacute;ticamente</input>
+        <input name="sort" id="frec" type="radio" checked="yes"> Ordenar por frecuencia de uso</input>
+    </form>
+    <div id="br"> </div>
+    <br/>
+    <div id="principal" style="height:500px; width:600px; text-align: justify"></div>
+
+
+    <script> //Notar: script está dentro de body
+        d3.select("div#br")
+            .append("input")
+            .attr("name", "generarWordCloud")
+            .attr("type", "submit")
+            .attr("value", "Generar wordcloud")
+            .on("click", drawWordcloud);
+
+
+        function drawWordcloud() {
+            // Condicionar el input:
+            var data = d3.select("textarea").property("value");
+            //Notar: seleccionar por tag siempre
+            //Notar: .property("value") para acceder inputs
+            data = data.split(" ");
+
+            data = data.map(function(palabra) { //remoción de puntuación
+                return palabra.replace(/\.|\)|>|\(|;|:|,|/g, "");
+            });
+
+
+
+
+            var stopwordsEsp = ["de","un","una","unas","unos","uno","sobre","todo","también","tras","otro","algún","alguno","alguna","algunos","algunas","ser","es","soy","eres","somos","sois","estoy","esta","estamos","estais","estan","como","en","para","atras","porque","por qué","estado","estaba","ante","antes","siendo","ambos","pero","por","poder","puede","puedo","podemos","podeis","pueden","fui","fue","fuimos","fueron","hacer","hago","hace","hacemos","haceis","hacen","cada","fin","incluso","primero","desde","conseguir","consigo","consigue","consigues","conseguimos","consiguen","ir","voy","va","vamos","vais","van","vaya","gueno","ha","tener","tengo","tiene","tenemos","teneis","tienen","el","la","lo","las","los","su","aqui","mio","tuyo","ellos","ellas","nos","nosotros","vosotros","vosotras","si","dentro","solo","solamente","saber","sabes","sabe","sabemos","sabeis","saben","ultimo","largo","bastante","haces","muchos","aquellos","aquellas","sus","entonces","tiempo","verdad","verdadero","verdadera","cierto","ciertos","cierta","ciertas","intentar","intento","intenta","intentas","intentamos","intentais","intentan","dos","bajo","arriba","encima","usar","uso","usas","usa","usamos","usais","usan","emplear","empleo","empleas","emplean","ampleamos","empleais","valor","muy","era","eras","eramos","eran","modo","bien","cual","cuando","donde","mientras","quien","con","entre","sin","trabajo","trabajar","trabajas","trabaja","trabajamos","trabajais","trabajan","podria","podrias","podriamos","podrian","podriais","yo","aquel", ",", ".", "a", "se", "les", "o", "que", "al", "del", "e", "y", ")", "(", "son", ":", "p", "este", "ese", "esa", "esas", "estas", "esto", "estos"];
+            data = data.map(function(palabra) {
+                return palabra.toLowerCase();
+            });
+            data = data.filter(function(palabra) { //remoción de palabras comunes
+                return !stopwordsEsp.includes(palabra);
+            });
+            data = data.filter(function(palabra) { //remoción de "undefined"
+                return !(palabra == "undefined");
+            });
+
+            // data = data.filter(function(palabra) { //remoción de palabras comunes
+            //     return !palabra.toString() == "undefined";
+            // });
+
+
+
+
+
+
+            // Ordenar el input (y armar una lista de diccionarios para contener
+            // la palabra (key) y su repeticiones (cant):
+
+            var dataOrden = [];
+            // por frecuencia:
+
+
+            var sorts = document.getElementsByName("sort");
+
+
+            if (sorts[0].checked) {
+                data.sort();
+                for (i = 0; i < data.length; i++) {
+                    dataOrden.push({key:data[i], cant: 1});
+                }
+                console.log(dataOrden);
+            } else {
+                var yaContiene;
+                for (i = 0; i < data.length; i++) {
+                     yaContiene = false;
+                     for (j = 0; j < dataOrden.length; j++) {
+                         if (dataOrden[j]["key"] == data[i]) {
+                              dataOrden[j]["cant"]++;
+                              yaContiene = true;
+                         }
+                     } if (!yaContiene) {
+                          dataOrden.push({key:data[i], cant: 1});
+                     }
+                }
+                dataOrden.sort(function(a,b) {return b["cant"] - a["cant"]});
+            }
+
+
+
+            // Dibujar el wordcloud:
+            var oe = ['p','i'];
+            var fontScale = d3.scaleLinear()
+                .domain([1,dataOrden.length])
+                .range([0,35]);
+
+            d3.select("div#principal").selectAll("span").remove();
+            // para recargar la página
+
+            d3.select("div#principal").selectAll("span").data(dataOrden)
+                .enter()  // update, exit
+                .append("span")
+                .text( function(d,i) {return d["key"] + " ";} )
+                .attr("class", function(d,i) { return oe[i%2]; })
+                .style("font-size", function(d,i) {
+                  return 35 - fontScale(i) + "px";
+                });
+        }
+    </script>
+
+
+</body>
+
+
+
+</html>
