@@ -1,0 +1,98 @@
+<!-- Autor: Scott Thomas Heston Aclaración de fuentes intelectuales: para la realización de este trabajo
+se ha consultado las seguientes fuentes: http://www.d3noob.org/2013/01/adding-tooltips-to-d3js-graph.html
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply#Using_apply_and_built-in_functions -->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.2.3/d3.min.js"></script>
+  <style>
+
+  .tooltip {
+    position: absolute;
+    text-align: center;
+    padding: 4px;
+    font: 10px sans-serif;
+    background: #ddd;
+    pointer-events: none;
+    /*para que el cursor registre el objecto atras del tooltip, y no el tooltip si misma*/
+  }
+
+</style>
+</head>
+<body>
+
+    <div id="viz"></div>
+    <script src="datos.js"></script>
+
+    <script>
+    var w=800, h=600, pad=250;
+
+    var escala = d3.scaleLinear()
+        .domain([0,15625084])
+        .range([0,w-pad]);
+
+    var svg = d3.select("div#viz").append("svg")
+        .attr("width", w)
+        .attr("height", h);
+
+    svg.selectAll("text").append("text")
+        .attr("x", 700)
+        .attr("y", 700)
+        .text("sdklhfjdsa");
+
+    var div = d3.select("body").append("div")
+        .attr("class", "tooltip")
+        .style("opacity", 0);
+
+    svg.selectAll("rect").data(data).enter().append("rect")
+        .attr("x", 0)
+        .attr("y", function(d,i) {return (i*20);} )
+        .attr("width", function(d,i) { return escala(d.poblacion);} )
+        .on("mouseover", function(barra) {
+            div.transition()
+                .duration(200)
+                .style("opacity", .9);
+            var textoAPrint = barra.provincia + ": " + barra.poblacion.toLocaleString();
+            div.text(textoAPrint)
+                .style("left", (d3.event.pageX) + "px")
+                .style("top", (d3.event.pageY) + "px")
+            })
+            .on("mousemove", function(d) {
+                div
+                .style("left", (d3.event.pageX) + "px")
+                .style("top", (d3.event.pageY) + "px");
+            })
+            .on("mouseout", function(d) {
+                div.transition()
+                .duration(500)
+                .style("opacity", 0);
+            })
+      .attr("height", 18);
+      //   .append("title")
+        // .text(   );
+
+
+
+    svg.selectAll("text").data(data).enter().append("text")
+        .attr("x", function(d) { return escala(d.poblacion) + 5;})
+        .attr("y", function(d,i) {return 15+ (i * 20);})
+        .text(function(d) {return d.provincia;});
+        // nota notación JSON (objeto javascript)
+
+    var pobMax = Math.max.apply(null,data.map(function(d) {return parseInt(d.poblacion);}));
+
+
+    d3.select("div#viz").append("text")
+    // svg.selectAll("text").append("text")
+        // .attr("x", 700)
+        // .attr("y", 700) // TODO: preguntar acerca de duda
+        .text("La población máxima es " + pobMax.toLocaleString());
+
+    </script>
+
+</body>
+</html>
