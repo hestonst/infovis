@@ -1,0 +1,129 @@
+<!-- Autor: Scott Thomas Heston Aclaración de fuentes intelectuales: para la realización de este trabajo
+se ha consultado las seguientes fuentes: http://www.d3noob.org/2012/12/adding-axis-labels-to-d3js-graph.html
+https://github.com/d3/d3-shape#curves
+https://www.dashingd3js.com/svg-paths-and-d3js-->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.2.3/d3.min.js"></script>
+  <style>
+
+  text {
+    font: 24px sans-serif;
+  }
+
+  .titulo {
+    font: 36px sans-serif;
+  }
+
+</style>
+</head>
+<body>
+</body>
+
+<script>
+var lineData = [ { "x": 1,   "y": 5},  { "x": 20,  "y": 20},
+                 { "x": 40,  "y": 10}, { "x": 60,  "y": 40},
+                 { "x": 80,  "y": 5},  { "x": 100, "y": 60}];
+
+var xMax = d3.max(lineData, function(d) {return d.x});
+var xMin = d3.min(lineData, function(d) {return d.x});
+
+var yMax = d3.max(lineData, function(d) {return d.y});
+var yMin = d3.min(lineData, function(d) {return d.y});
+//note d3 min/max
+
+
+var width=1000, height=800, padding = 50;
+
+var scaleY = d3.scaleLinear()
+    .domain([yMin,yMax])
+    .range([height-padding,padding]);
+var scaleX = d3.scaleLinear()
+    .domain([xMin,xMax])
+    .range([padding,width-padding]);
+
+var tickPx = 150;
+//espacio entre ticks en px
+//note: .ticks cambiara aún una cantidad explícita de ticks si no conviene
+//a la escala dada
+
+var axisY = d3.axisRight(scaleY)
+    .ticks(Math.round((height-padding)/tickPx));
+var axisX = d3.axisBottom(scaleX)
+    .ticks(Math.round((width-padding)/tickPx));
+
+var svg = d3.select("body")
+    .append("svg")
+    .attr("width", width)
+    .attr("height", height)
+    .style("pointer-events", "none");
+
+var ejeX = svg
+    .append("g")
+    .attr("class", "xAxis")
+    .attr("transform", "translate(0," + (height - padding + 5) + ")")
+    .call(axisX);
+
+var rotuloGrafico = svg.append("text")
+    .text("Título del gráfico")
+    .attr("text-anchor", "middle")
+    .attr("class", "titulo")
+    .attr("x", ((width - padding)/2) + padding)
+    .attr("y", padding + (0.05*height));
+
+var percDisplRotulos = .02
+
+var rotuloX = svg.append("text")
+    .text("Rótulo Eje X")
+    .attr("text-anchor", "middle")
+    .attr("x", ((width-padding)/2)+padding)
+    .attr("y", height-(padding+(percDisplRotulos*height)));
+
+var rotuloY = svg.append("text")
+  .attr("transform", "rotate(90)") //gira alrededor del origen
+  .text("Rótulo Eje Y")
+  .attr("text-anchor", "middle")
+  .attr("x", (height-padding)/2)
+  .attr("y", -(padding+width*percDisplRotulos));
+   //vertical
+
+
+var ejeY = svg
+    .append("g")
+    .attr("class", "yAxis")
+    //nota: la funcion dentro del string
+    .call(axisY);
+
+// D3’s call() function takes a selection as input and hands that selection
+// off to any function. So, in this case, we have just appended a new g group
+// element to contain all of our about-to-be-generated axis elements.
+// (The g isn’t strictly necessary, but keeps the elements organized and allows
+// us to apply a class to the entire group, which we’ll do in a moment.)
+
+svg.select("xAxis").append("text").text("hello");
+
+
+var lineFunction = d3.line() //d3 v3 :d3.svg.line()
+                      .x(function(d) { return scaleX(d.x); })
+                      .y(function(d) { return scaleY(d.y); })
+                      .curve(d3.curveCardinal.tension(0)); // 1-lineal
+                      // .curve(d3.curveCatmullRom.alpha(0.5));
+                      // otros variantes:
+                      // https://github.com/d3/d3-shape#curves
+
+//In SVG there exist line and path. But they use their own
+// turtle-like language  -->
+
+var lineGraph = svg.append("path")
+                    .attr("d", lineFunction(lineData))
+                    .attr("stroke", "blue")
+                    .attr("stroke-width", 2)
+                    .attr("fill", "none");
+
+</script>
+</html>

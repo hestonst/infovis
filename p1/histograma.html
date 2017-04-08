@@ -67,13 +67,16 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
                 .style("top", (d3.event.pageY) + "px");
             })
             .on("mouseout", function(d) {
-                div.transition()
-                .duration(500)
-                .style("opacity", 0);
+                div.transition() //there is a way to make non-linear
+                //also colors
+                // .duration(50)
+                .easeCubic(.5)
+                // .attr("color", "red")
+                .style("background", "red");
             })
       .attr("height", 18);
-      //   .append("title")
-        // .text(   );
+          //.append("title")
+          //.text();
 
 
 
@@ -83,16 +86,22 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
         .text(function(d) {return d.provincia;});
         // nota notación JSON (objeto javascript)
 
-    var pobMax = Math.max.apply(null,data.map(function(d) {return parseInt(d.poblacion);}));
+    var pobMax = Math.max.apply(null,
+        data.map(function(d) {return parseInt(d.poblacion);}));
 
 
-    d3.select("div#viz").append("text")
-    // svg.selectAll("text").append("text")
-        // .attr("x", 700)
-        // .attr("y", 700) // TODO: preguntar acerca de duda
+    // d3.select("div#viz").append("text")
+    svg.append("text")
+        .attr("x", 10)
+        .attr("y", 550) // TODO: note: do not append to array of all text,
+        //just add to
         .text("La población máxima es " + pobMax.toLocaleString());
 
     </script>
 
 </body>
 </html>
+
+
+
+<!-- TODO: graph english words by origin for different speakers  -->

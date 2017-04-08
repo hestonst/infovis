@@ -1,0 +1,189 @@
+<!-- Autor: Scott Thomas Heston Aclaración de fuentes intelectuales: para la realización de este trabajo
+se ha consultado las seguientes fuentes: TPs anteriores,
+https://github.com/d3/d3-drag/blob/master/README.md#drag
+https://github.com/d3/d3-selection/blob/master/README.md#selection_each
+DOM Event types: https://developer.mozilla.org/en-US/docs/Web/Events#Standard_events-->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Selector rectángular</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.2.3/d3.min.js"></script>
+</head>
+
+<body>
+</body>
+
+<script>
+    var width = 600,
+        height = 400,
+        radio = 5;
+        radioSelector = 10
+        paddingBorde = radio + 10;
+    var xMin = paddingBorde,
+        xMax = width - paddingBorde,
+        yMin = paddingBorde,
+        yMax = height - paddingBorde;
+
+        var datosPuntos = d3.range(20).map(function(i) {
+          return {
+            id: i,
+            x: d3.randomUniform(paddingBorde, width - paddingBorde)(),
+            y: d3.randomUniform(paddingBorde, height - paddingBorde)()
+          };
+        });
+        //nota: ninguna funcion funcional en JS es paralela
+        //HTML5 "Web Worker"
+
+    var xScale = d3.scaleLinear()
+        .domain([0, 1])
+        .range([xMin, xMax]);
+    var yScale = d3.scaleLinear()
+        .domain([0, 1])
+        .range([yMin, yMax]); // nota: aceptan *arrays*
+
+    var svg = d3.select("body")
+        .append("svg")
+        .attr("width", width)
+        .attr("height", height)
+        .on("click", clickOnSVG);
+
+    var svg1 = d3.select("body")
+        .append("svg")
+        .attr("width", width)
+        .attr("height", height/4);
+
+    var rotulo = svg1.append("text").text("IDs selecionados: ")
+        .attr("y","50");
+
+    svg1.append("text").text("Arrasta las esquinas del rectángulo para volver a posicionarlas: ").attr("y","70");
+
+    svg.selectAll("circle")
+        .data(datosPuntos)
+        .enter()
+        .append("circle")
+        .attr("r", radio)
+        .attr("class", "datum")
+        .attr("cx", function(d) {
+            return d.x;
+        })
+        .attr("cy", function(d) {
+            return d.y;
+        });
+
+    var fabricaCircle = function(id) {
+      return svg.append("circle")
+      .attr("id", id)
+      .attr("class", "selector")
+      .attr("r", radioSelector)
+      .attr("cx", d3.event.pageX-radioSelector*Math.sin(Math.PI/4))
+      .attr("cy", d3.event.pageY-radioSelector*Math.sin(Math.PI/4))
+      .attr("fill", "teal")
+      .call(d3.drag().on("drag", moveSelector));
+      // .on("mousemove", function(d) {
+      //     console.log(this);
+      //     console.log(d);
+      //     d3.select(this).attr("cx", d3.event.pageX)
+      //         .attr("cy", d3.event.pageY);
+      // })
+      // .on("mouseup", function() {
+      //     d3.select(this).on("mousemove", null);
+      // });
+      //duda: mousemove/mouseup no siempre se registra
+    }
+
+    var moveSelector = function(d) {
+        d3.select(this)
+            .attr("cx", event.x-radioSelector*Math.sin(Math.PI/4))
+            .attr("cy", event.y-radioSelector*Math.sin(Math.PI/4));
+            // The subject of a drag gesture may not be changed
+            // after the gesture starts. The subject accessor is invoked
+            // with the same context and arguments as selection.on listeners:
+            // the current datum d and index i, with the this context as the
+            // current DOM element. During the evaluation of the subject
+            // accessor, d3.event is a beforestart drag event. Use
+            // event.sourceEvent to access the initiating input event and
+            // event.identifier to access the touch identifier. The event.x
+            // and event.y are relative to the container, and are computed
+            // using d3.mouse or d3.touch as appropriate.
+        if (d3.selectAll("circle.selector")._groups[0].length > 1) {
+          //si no hay 2 circle.selector, no hay un rect para modificar
+            svg.select("rect.selector")
+                .attr("width", Math.abs(d3.select("circle#one").attr("cx") - d3.select("circle#two").attr("cx")))
+                .attr("height", Math.abs(d3.select("circle#one").attr("cy") - d3.select("circle#two").attr("cy")))
+                //note: d3.min devuelve número incorrecto en algunos casos. Tal vez min consulte otro attr?
+                .attr("x", Math.min(d3.select("circle#one").attr("cx"), d3.select("circle#two").attr("cx")))
+                .attr("y", Math.min(d3.select("circle#one").attr("cy"), d3.select("circle#two").attr("cy")))
+                .style("fill", "none")
+                .style("stroke", "teal");
+            updateSelection();
+        }
+    };
+
+    var updateSelection = function() {
+        var ids = "IDs selecionados: ";
+        if (d3.selectAll("circle.selector")._groups[0].length < 2) {
+            svg.selectAll("circle.datum").attr("fill", "black");
+        } else {
+            svg.selectAll("circle.datum")
+            .each(function(d, i) {
+                if (((d.x >= d3.select("circle#one").attr("cx") &&
+                d.x <= d3.select("circle#two").attr("cx")) ||
+                (d.x <= d3.select("circle#one").attr("cx") &&
+                d.x >= d3.select("circle#two").attr("cx"))) &&
+                ((d.y >= d3.select("circle#one").attr("cy") &&
+                d.y <= d3.select("circle#two").attr("cy")) ||
+                (d.y <= d3.select("circle#one").attr("cy") &&
+                d.y >= d3.select("circle#two").attr("cy")))) {
+                    d3.select(this).attr("fill", "teal"); //padre de this
+                    //Del API: # selection.each(function) <>
+                    //Invokes the specified function for each selected element,
+                    //in order, being passed the current datum (d), the current
+                    //index (i), and the current group (nodes), with this as the
+                    //current DOM element (nodes[i]). This method can be used to
+                    //invoke arbitrary code for each selected element, and is
+                    //useful for creating a context to access parent and child
+                    //data simultaneously, such as:
+                    // d.x = ("class", "datum selected");
+                    ids += d.id + ",";
+                } else {
+                  d3.select(this).attr("fill", "black");
+                }
+            });
+        }
+        rotulo.text(ids.substring(0,ids.length-1));
+      }
+
+    var clickOnSVG = function() {
+        if (d3.selectAll("circle.selector")._groups[0].length > 1) {
+            svg.selectAll(".selector").remove(); //nota: método
+        } else if (d3.selectAll("circle.selector")._groups[0].length == 0) {
+          //si no hay circle.selector, crea el primero circulo
+          fabricaCircle("one");
+        } else {
+            fabricaCircle("two");
+            svg.append("rect")
+                .attr("class", "selector")
+                .attr("width", Math.abs(d3.select("circle#one").attr("cx") - d3.select("circle#two").attr("cx")))
+                .attr("height", Math.abs(d3.select("circle#one").attr("cy") - d3.select("circle#two").attr("cy")))
+                //note: d3.min devuelve número incorrecto en algunos casos. Tal vez min consulte otro attr?
+                .attr("x", Math.min(d3.select("circle#one").attr("cx"), d3.select("circle#two").attr("cx")))
+                .attr("y", Math.min(d3.select("circle#one").attr("cy"), d3.select("circle#two").attr("cy")))
+                .style("fill", "none")
+                .style("stroke", "teal");
+        }
+        updateSelection();
+    };
+
+
+    svg.on("click", function() { clickOnSVG();});
+    //mouseover es demasiado entrecortado para implementar en Safari y Chrome 
+    //https://developer.mozilla.org/en-US/docs/Web/Events#Standard_events
+
+
+</script>
+
+</html>
