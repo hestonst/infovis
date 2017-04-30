@@ -1,0 +1,7 @@
+other	{'Greek': 1}
+romance_Count	8
+other_Count	1
+total_Count	28
+germanic_Count	19
+romance	{'Latin': 8, 'French': 7}
+germanic	{'Germanic': 1, 'German': 1, 'Old English': 19}

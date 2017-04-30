@@ -1,13 +1,20 @@
 from nltk import pos_tag, word_tokenize
+
+import DetectLanguage
+
 # download('all')
 import re
 import copy
+
 from html.entities import name2codepoint
-from dateutil.parser import parse as dateParse
-# adds support for parsing in 20 languages
+
+import locale, datetime
+
 import csv
 
-names = ["Scott Heston", "Scoot Hestoon", "Thomas Heston"]
+names = ["Giovanna Grippe"]
+facebookLocal = "pt_BR" #for data parsing
+dateFormat = '%a, %d de %B de %Y'
 releventWordClasses = ["RP","RB","NN","VB","FW","JJ","JJR","JJS","NNP","NNS","POS","RBR","RBS","VBD","VBG","VBN","VBP","VBZ" ]
 releventWordClassesList = [["RP",0],["RB",0],["NN",0],["VB",0],["FW",0],["JJ",0],["JJR",0],["JJS",0],["NNP",0],["NNS",0],["POS",0],["RBR",0],["RBS",0],["VBD",0],["VBG",0],["VBN",0],["VBP",0],["VBZ",0] ]
 
@@ -19,13 +26,11 @@ releventWordClassesList = [["RP",0],["RB",0],["NN",0],["VB",0],["FW",0],["JJ",0]
 # NNP: noun, proper, singular
 # NN: noun, common, singular or mass
 # NNS: noun, common, plural
+# POS: genitive marker
 # RB: adverb
 # RBR: adverb, comparative
 # RBS: adverb, superlative
 # RP: particle
-
-
-# POS: genitive marker
 # VB: verb, base form
 # VBD: verb, past tense
 # VBG: verb, present participle or gerund
@@ -58,11 +63,13 @@ def unescape(text):
 
 
 
-filepath = "messages.htm"
+filepath = "input/messagesGio.htm"
 file = open(filepath, "r")
 dom = file.read()
 dom = unescape(dom)
 file.close()
+
+particleList = []
 
 regex = re.compile('<div class="message_header"><span class="user">[^<]*</span><span class="meta">[^<]*</span></div></div><p>[^<]*')
 listOfMessages = regex.findall(dom)
@@ -74,10 +81,18 @@ regex2 = re.compile('class="meta">[^<]*')
 regex3 = re.compile('<p>[^<]*')
 
 listOfMessages = list(filter(lambda subdom: (regex.findall(subdom)[0][47:] in names), listOfMessages))
+listOfMessages = list(filter(lambda message: (DetectLanguage.detect_language(message) == "english"), listOfMessages))
+
+print(listOfMessages)
 
 def formatMessage(subDom):
-    date = dateParse(regex2.findall(subDom)[0][13:]).date()
+    locale.setlocale(locale.LC_ALL, "pt_BR")
+    dateString = regex2.findall(subDom)[0]
+    dateString = dateString[13:16] + dateString[dateString.index(','):dateString.index('à')-1]
+    # current format: Quinta... recognized: Qui
+    date = datetime.datetime.strptime(dateString, dateFormat)
     message = pos_tag(word_tokenize(regex3.findall(subDom)[0][3:]))
+    print(message)
     return {'date' : date, 'message' : message}
 
 listOfMessages = list(map(formatMessage, listOfMessages))
@@ -90,6 +105,8 @@ for entry in listOfMessages:
     if (str(entry["date"].day) + "-" + str(entry["date"].month) + "-" + str(entry["date"].year)) not in months:
         months[str(entry["date"].day) + "-" + str(entry["date"].month) + "-" + str(entry["date"].year)] = copy.deepcopy(releventWordClassesList)
     for word in entry["message"]:
+        if word[1] == "RP": # is particle
+            print(word[0])
         #one word can have multiple tags, but then will have multiple tuplets
         if word[1] in releventWordClasses:
             for tup in months[str(entry["date"].day) + "-" + str(entry["date"].month) + "-" + str(entry["date"].year)]:
@@ -98,7 +115,7 @@ for entry in listOfMessages:
 
 # print(months)
 
-filepath = "wordTagsByMonth.csv"
+filepath = "wordTagsByMonthGio.csv"
 file = open(filepath, "w")
 with file as csvfile:
     spamwriter = csv.writer(csvfile, delimiter=',', quotechar='|', quoting=csv.QUOTE_MINIMAL)
@@ -108,6 +125,8 @@ with file as csvfile:
         for val in value:
             vals += [val[1]]
         spamwriter.writerow([key] + vals)
+
+
 
 
 # pretty Print to JSON:

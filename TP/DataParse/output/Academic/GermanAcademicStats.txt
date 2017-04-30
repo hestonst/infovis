@@ -1,0 +1,8 @@
+romance_Count	231
+germanic_Count	92
+other	{'Greek': 23, 'Egyptian': 1, 'Arabic': 1}
+other_Count	25
+romance	{'French': 156, 'Italian': 3, 'Spanish': 1, 'Latin': 215}
+germanic	{'Norse': 6, 'German': 7, 'Germanic': 4, 'Old English': 80, 'Dutch': 1}
+total_Count	348
+word_count_with_redundancies	2548

@@ -1,0 +1,421 @@
+
+ 
+Materials and methods
+Cell culture and treatments
+The oral squamous carcinoma cell line OSCC-3 was kindly pro-
+vided by Dr. Márcio Fonseca, University of Brasília, who originally
+acquired it from ATCC (American Type Culture Collection). Cells
+were maintained at 37
+
+ in Dulbecco’s Modiﬁed Ea-
+gle Medium (DMEM) supplemented with 10% fetal bovine serum
+(FBS), penicillin and streptomycin. All cell culture reagents were
+purchased from Invitrogen (Carlsbad, USA).
+For the experiments, cells were seeded at the densities of 
+
+cells/well in 6-well plates for cell viability; 1.5
+
+cells/well in 24-well plates for cell toxicity assay and 1.2
+
+cells/10 cm (diameter) round plates for DNA fragmentation and
+immunoblot assays. Cells were treated with 500
+l
+g/mL of each
+fraction or TCE for 24 and 48 h. For determining the dose–response
+curve, decreasing concentrations were used, as indicated. Every
+experiment was performed at least three independent times.
+Extract puriﬁcation and fractionation
+Plant material
+Leaves of 
+ Nicotiana tabacum
+ L. (Burley type) were harvested
+from the Botanical Garden of the Facultad de Ciencias Químicas
+(FCQ), located in the Campus of the Universidad Nacional de Asun-
+ción in San Lorenzo, Paraguay, on September 2004. A voucher spec-
+imen, identiﬁed by Germán González Salema, is deposited at the
+Herbarium FCQ (G Delmás 210).
+Extract 
+Dried plantmaterialwas ground toa coarsepowder usinga kni-
+ves mill.The powderwassubmittedtoextractionwithmethanolat
+room temperature, with occasional stirring. The extracts were ﬁl-
+tered and pooled prior to be concentrated by a rotary vacuum
+evaporation below 40
+ 
+C, generating the tobacco crude extract
+(TCE).
+Fractionation
+TCE was fractionated as previously described
+13
+with modiﬁca-
+tions. TCE was dissolved in ethyl acetate (Fraction A), with 38.4%
+of the initial material remaining as insoluble fraction (Fraction
+B). The obtained soluble portion (A) was submitted to liquid–liquid
+partition, originating the following fractions: fraction A1 (sodium
+bicarbonate saturated solution); fraction A2 (sodium hydroxide
+1 M); fraction A3 (hydrochloric acid 20%). Finally, the remainder
+organic fraction was also washed with sodium bicarbonate satu-
+rated solution and the solvent evaporated, generating fraction A4.
+To obtain stock solutions for testing, TCE and its fractions were di-
+luted as follows: TCE in dimethylsulfoxide (DMSO):ethanol (2:3),
+A1 in PBS, and A4 in ethanol. After dilution, the solutions were
+cleared by centrifugation and the pellet weight subtracted from
+the initial weight to calculate the actual concentration, which var-
+ied from 30 to 150 mg/mL. Stock solutions were kept at
+ 
+20
+ 
+C in
+the dark until use.
+Thin layer chromatography (TLC)
+The samples were submitted to TLC in silica gel (silicagel/TLC
+cards, Fluka) in comparison with nicotine (Sigma), using the mix-
+ture hexane:ethyl acetate (6:4) as eluent. The obtained chromato-
+gram was revealed with modiﬁed Dragendorff reagent.
+14
+Cell viability assay
+Cells were seeded in 24-well plates and treated with TCE or its
+fractions at 500
+l
+g/mL for 24 or 48 h; or with equal volume of 
+vehicles. After treatment, cells were collected by trypsinization
+and centrifugation, washed once with phosphate buffered saline
+(PBS), stained with trypan blue solution (0.2% in PBS) for 5 min
+at room temperature and immediately inspected in a hemocytom-
+eter. The percentage of viable cells upon each treatment was ob-
+tained by counting blue and total cells.
+Cell cytotoxic assay and dose–response curve
+Cell seeding and treatment were done as described above. After
+treatment, dead (ﬂoating) cells were washed out with PBS.
+Remaining adherent live cells were ﬁxed with methanol 100% for
+20 min and stained with crystal violet solution (0.2% in methanol)
+for 5 min at room temperature. After extensive washing, dye-up-
+take by cells was assessed by recovery with citrate-based alcoholic
+solution (sodium citrate 0.1 M and ethanol 50%) and absorbance at
+570 nm was measured at a spectrophotometer (Shimadzu, Japan).
+DNA fragmentation assay
+Cells were treated with TCE and fractions A1 and A4 at 500
+l
+g/
+mL for the indicated periods of time. Positive (staurosporine
+200 nM, and 5-ﬂuorouracil (5FU) 1 mg/mL) and negative (vehicles)
+controls were included in the experimental conditions. After 48 h
+of treatment, ﬂoating and adherent cells were collected, lyzed in
+SDS buffer solution (0.2 M EDTA, 50 mM Tris pH 8.0, 5% w/v Triton
+X-100, 2% w/v SDS) and total DNA was puriﬁed using the phenol/
+chloroform method, followed by alcoholic precipitation. Two
+micrograms of the obtainedmaterialwere subjected to electropho-
+resis on a 1.5% agarose gel, containing ethidium bromide (1 ng/
+mL). Bands were visualized under UV light and images were ac-
+quired on an Eagle eye Acquisition System.
+Immuno-blotting 
+Total proteins were extracted with NP40-buffer (50 mM
+Hepes pH 7.5, 150 mM NaCl, 2 mM EGTA, 1 mM EDTA, 1 mM
+PMSF, 1% w/v NP-40), snap frozen and stored in liquid nitrogen
+until use. Quantiﬁcation was performed using the Bio-Rad
+Protein Assay. Twenty-ﬁve micrograms of total proteins were
+subjected to SDS–PAGE on a 12.5% acrylamide gel, transferred
+to nitrocellulose membrane using a semi-dry transfer system
+and methanol/glycine-based buffer. The membrane was blocked
+with 5% non-fat milk in TTBS, prior to incubation with speciﬁc
+antibodies. Antibodies for caspase-3 and tubulin were 9662
+(Cell Signaling), and E1707 (Santa Cruz Biotechnology, USA),
+respectively. Secondary anti-goat and anti-rabbit antibodies,
+conjugated with HRP, were purchased from Santa-Cruz Biotech-
+nology, USA. Decorated proteins were visualized with chemolu-
+minescent ECL-plus (Amersham, USA) on radiographic ﬁlms
+(Kodak, USA). Each experiment was done at least three indepen-
+dent times.
+Statistical analysis of data
+All data were analyzed using the PRISM 3.0 GraphPad software,
+according to statistical parameters described in the ﬁgure legends.
+870
+ S.T. Elias et al./Oral Oncology 46 (2010) 869–873
+
+
+
+
+
+ 
+Results
+Tobacco crude extract (TCE) reduces cell viability and induces cell
+death in a dose-dependent manner 
+To evaluate the effects of tobacco crude extract (TCE) on cell
+viability, cells were treated with either TCE (500
+l
+g/mL) or vehicle
+alone for 24 and 48 h, and viability was assessed by trypan blue
+exclusion. TCE treatment reduced cell viability to 78.0% and 5.0%
+at 24 h and 48 h, respectively (
+Fig. 1
+A). TCE cytotoxicity was as-
+sessed by crystal violet staining of remaining (alive) cells
+(
+Fig. 1
+B). TCE treatment for 24 and 48 h caused 68.0% and 85.0%
+of cell death respectively, when compared to the vehicle alone.
+To test whether TCE-mediated cytotoxicity was dose-depen-
+dent, cells were treated with decreasing concentrations (500,
+250, 100, 50, 10 and 0
+l
+g/mL) of TCE for 24 h and cell survival
+was measured by spectrophotometry(
+Fig.2
+). At concentrations be-
+low 100
+l
+g/mL, TCE did not induce cytotoxicity, but treatment
+with higher concentrations resulted in decreased cell survival
+(88.4%, 53.0% and 31.1% upon treatment with 100
+l
+g/mL, 250
+l
+g/
+mL and 500
+l
+g/mL TCE, respectively). The calculated EC50 for
+TCE was 344.35
+l
+g/mL. Collectively, these results indicate that to-
+bacco crude extract is cytotoxic to oral cancer cells, and exerts its
+effects in a dose-dependent manner.
+Cytotoxicity induced by tobacco extract fractions
+Because TCE comprises many different chemical compounds,
+we investigated whether fractions of TCE with distinct solubility
+properties (fractions A1 and A4) could likewise induce cell death
+(
+Fig. 3
+). After 24 h treatment, TCE and fraction A4 were able to sig-
+niﬁcantly reduce cell survival, whereas fraction A1 was innocuous
+(
+Fig. 3
+). After 48 h, a marked cytotoxic effect could be seen upon
+treatmentwithTCE (15.1% survival) andwithfraction A4(6.2% sur-
+vival). Overall, these results indicate the presence of chemical com-
+pounds in TCE and fraction A4 capable of inducing cell death.
+To verify the absence of nicotine in fraction A4, a thin layer
+chromatography (TLC) was performed. Upon development with
+the Dragendoff reagent, the nicotine region in the TLC plate
+showed the expected orange color, characteristic of alkaloids,
+whereas fraction A4 did not develop any color. These results indi-
+cate that neither nicotine nor other alkaloids are present in fraction
+A4.
+Figure 1
+ Tobacco crude extract (TCE) effects on cell viability of OSCC-3. Cells were
+treated with TCE (500
+l
+g/mL) or vehicle for 24 and 48 h. (a) Trypan blue exclusion
+assay for cell viability. (b) Cytotoxicity was measured by crystal violet dye-uptake
+of surviving adherent cells. Results depict average of three independent experi-
+ments, each performed in triplicate.
+ *
+ p
+ < 0.05 vs vehicle.
+Figure 2
+ TCE-mediated cell death on OSCC-3 is dose-dependent. Cells were treated
+with TCE in increasing concentrations (0, 10, 50, 100, 250, 500
+l
+g/mL, shown is Log
+[TCE]
+ l
+g/mL), for 24 h, and cytotoxicity was quantiﬁed by crystal violet dye-uptake
+in surviving cells. Depicted is the average of three independent experiments, each
+performed in triplicate.
+Figure 3
+ Quantiﬁcation of cell death induced by TCE and its A1 and A4 fractions in
+OSCC-3. Cells were treated with TCE and A1 and A4 fractions at the concentration of 
+500 g/mL for 24 and 48 h. Controls were normalized to 100%, and depicted as one
+white bar. Shown are results from three independent experiments, where each
+treatment was performed in triplicate.
+ *
+ p
+ < 0.05 vs vehicle.
+S.T. Elias et al./Oral Oncology 46 (2010) 869–873
+ 871
+
+
+
+
+
+
+
+
+ 
+DNA fragmentation assay
+Cell death can take place via necrosis, with cytoplasm extrusion,
+or via apoptosis, the programmed pathway of cell elimination, de-
+void of intracellular content shedding. During the later, DNA is
+methodically digested between the nucleosomes, generating frag-
+ments of deﬁned size. In addition, apoptotic events are mediated
+through a cascade of zymogens termed caspases. To test whether
+tobacco-mediated cell death was necrotic or apoptotic, DNA frag-
+mentation assays and immunoblotting for cleaved caspase-3 were
+performed, using 5-ﬂuorouracil (1 mg/mL), a chemotherapic agent
+and staurosporine (200 nM), a known apoptotic-inducer, as posi-
+tive controls.
+ Fig. 4
+ shows DNA fragmentation (‘‘laddering”) caused
+by treatment with staurosporine, TCE and fraction A4. Treatment
+with vehicle or medium alone resulted in a single DNA band, indi-
+cating the absence of DNA cleavage. Additionally, fraction A1 was
+not able to induce DNA fragmentation. These results indicate that
+the cytotoxicity observed upon treatment with TCE and fraction
+A4 was apoptotic.
+Caspase-3 mediates the cell death induced by TCE and neutral fraction
+To conﬁrm that both TCE and fraction A4 induced cell death via
+apoptosis, an immunoblot using an antibody that recognizes both
+cleaved and intact forms of caspase-3 was done (
+Fig. 5
+). Treatment
+with staurosporine and 5FU was included as above.
+The intact form of caspase was visible in all samples. Treatment
+with TCE and fraction A4 resulted in caspase-3 activation, as noted
+by a 17 kDa band, corresponding to its cleaved form. This band was
+absent from samples treated with fraction A1 as well as in the neg-
+ative controls. These results allowed us to conclude that both TCE
+and its A4 fraction induced caspase-3-mediated apoptosis.
+Discussion
+Our study aimed at investigating the cytotoxic activity of TCE
+and two of its fractions on human oral squamous cell carcinoma.
+Our data showed that TCE was able to induce cell death in the
+OSCC-3 cell line via apoptosis. This is in agreement with previous
+work,
+9
+which showed that tobacco extract could also induce apop-
+tosis in HCPC-1 cells, a cell lineage of Syrian hamster oral epider-
+moid cell carcinoma. In addition, the ability of TCE to induce cell
+death was dose-dependent, and occurred via caspase-activation,
+accompanied by extensive DNA fragmentation. These results, how-
+ever, do not rule out the possibility that TCE-induced cell death
+could occur via alternative mechanisms. For example, it has been
+reported that tobacco
+9
+induces cell death via nitric oxide and
+through the formation of reactive oxygen species. Other studies
+have additionally proposed that the lignins found in several plant
+extracts could trigger apoptosis by inducing DNA damage.
+15
+To
+determine the amount of lignin present in TCE and fractions was
+out of the scope of the present work.
+We have extended the analyses of TCE-induced cell death by
+using two (A1 and A4) fractions thereof. From these, only fraction
+A4 showed signiﬁcant cytotoxicity and apoptosis, which suggest
+the presence of chemical components capable of inducing cell
+death. However, at this point it is impossible to determine whether
+the observed cytotoxicity was caused by only one component or
+was resultant from synergic effects of several compounds. The
+identiﬁcation of such compound(s) could result in the develop-
+ment of a new therapeutic to manage oral cancer.
+Plant derived therapeutics to treat cancer have long been em-
+ployed. For instance taxol, vincristine and vinblastine were origi-
+nally derived from the genders
+ Taxus brevifolia
+ and
+ Catharanthus
+roseus.
+ Other alternative extracts were also effective in oral cancer
+cell lines, such as the one from
+ Ginkgo biloba
+, which induced cas-
+pase-3-mediated apoptosis in human cancer cells.
+16
+However, because tobacco smoke is the leading cause of cancer
+development in the oral cavity, its usage as cytotoxic (anti-cancer)
+agent is at best controversial. Tobacco is a complex mixture of 
+many different chemicals, which can both induce and inhibit apop-
+tosis.
+17
+In this sense, it is possible that tobacco-induced tumorigen-
+esis results from the synergism of compounds which would
+normally lead to opposing effects. For instance, DNA damaging
+agents would cause cell death in normal cells; a property shared
+with many chemotherapeutics. However, because compounds
+which are anti-apoptotic are also present, cells fail to die, and
+hence accumulate mutations that ultimately lead to cancer forma-
+tion.
+6
+This mechanism for tumorigenesis seems to hold true in the
+view that nicotine, for instance, has been reported to both potenti-
+ate the mutagenic effect of nitrosamines
+8
+and to reduce the cyto-
+toxicity of cisplatin in human oral cancer cells,
+10
+and of 
+doxorubicin in KB-3-1cervicalcarcinomaandMCF-7humanbreast
+cancer cells.
+11
+Several pathways seem to be involved in the ob-
+served interference such as AKT, Erk1/2, NF-
+j
+B, and Bax.
+10,18–20
+Curiously, nicotine has also been shown to have an anti-prolif-
+erative effect on human keratinocytes and to interfere with their
+cell cycle and differentiation.
+12
+In our experiments, nicotine alone
+had no effect on OSCC-3 proliferation (data not shown), in accor-
+dance to what others have reported.
+9
+Moreover, since nicotine is
+
+
+ 
+F
+IG
+. 1 – Records of Pampas Cat,
+Oncifelis colocolo
+, in Brazil.
+despite its wide range, it still remains one of theleast studied Neotropical cats (Silveira 1995,Nowell & Jackson 1996). Pampas catseems to berare in Brazil, where it is considered threatened(Bernardes
+et al 
+. 1990), but tends to be morecommon in the temperate parts of its range(Oliveira 1994).Herein we present new records on the geographicdistribution, habitat utilization, diet, and externalmeasurements of 
+O. colocolo
+in the Cerrado of Central Brazil (Fig. 1). Data were obtained fromtwenty-eight records [nine road killed indivi-duals, seven sightings, two captures (TadeuOliveira, pers. comm.), nine tracks and one skinacquired from hunters – Table 1]. Although thepampas cat shares its habitat with sympatric smallwild felids, there are significant differences intheir prints, reflected from morphological andbiometric differences (Rogerio de Paula, unpub-lished data). Four road killed specimens weredeposited in scientific collections: UNB 1741and UNB 1742, from Palmas, Tocantins State(deposited in mammal collection of Universidadede Brasília, Distrito Federal); JD346, fromChapada dos Guimarães, Mato Grosso State (inmammal collection reference of Institute of Bionciences of Universidade do Mato Grosso);and MN 63629, from Emas National Park,Goiás State (in Museu Nacional – UniversidadeFederal do Rio de Janeiro).The Cerrado biome occupies an area of 2,000,000 km
+2
+distributed through Brazil,Paraguay and Bolivia, with altitudes varying from200 to more than 1,600 m (IBGE 1977, Ribeiro& Walter 1998). It consists of is a mosaic of vegetation types, ranging from open grasslands(“campo limpo” – only grass and herbs cover;“campo sujo” – cover of grass and bushes in low densities) and savanna-like vegetation (“campocerrado” – grass with low densities of bushes and
+Bagno M. A.
+et al.
+76
+MAMMALIA• 2004 • 68 (1)
+
+ 
+Natural History and Conservation Status of the Pampas Cat
+77
+MAMMALIA• 2004 • 68 (1)
+T
+ ABLE
+1. – Records of Pampas Cat,
+Oncifelis colocolo
+in Brazilian Cerrado, from 1985 to 2002.
+Local CoordinatesDateHabitatType records
+Highway BR 364, Chapada (15°10’ S, 55°40’ W)1985SavannaRoad killdos Guimarães – Mato GrossoRondonópolis – Mato Grosso(16°29’ S, 54°37’ W)February 1993SavannaCaptureEmas National Park – Goiás(17°50’ S, 18°15’ W)February 1995GrasslandSightingIlha Solteira – São Paulo(20°4’ S, 51°7’ W)February 1996SavannaCaptureEmas National Park – Goiás(17°50’ S, 18°15’ W)1998GrasslandSightingHighway BR 158, Nova (14°41’ S, 52°20’ W)1998Savanna and Road kill Xavantina – Mato Grossocattle pasturesGrande Sertão Veredas (15°22’ S, 45°49’ W)October 1998SavannaSightingNational Park – Minas GeraisSerra da Canastra National Park – (20°S, 46°15’ W)June 1999SavannaSightingMinas GeraisBR 060 Abadiânia/Alexânia – Goiás(16°06’ S, 48°34’ W)July 1999Savanna and Road killcattle pasturesHighway TO 010, Palmas – (10°10’ S, 48°20’ W)July 1999PasturesRoad killTocantinsTO 040, Palmas – Tocantins(10°10’ S, 48°20’ W)July 1999Savanna and Road killcattle pasturesTO 050, Palmas – Tocantins(10°10’ S, 48°20’ W)July 1999Savanna and Road killcattle pasturesEmas National Park – Goiás(17°50’ S, 18°15’ W)April 2000GrasslandRoad killEmas National Park – Goiás(17°50’ S, 18°15’ W)April 2000AgricultureSightingEmas National Park – Goiás(17°50’ S, 18°15’ W)July 2000Grassland/SightingagricultureSerra da Canastra National Park – (20°S, 46°15’ W)February 2001SavannaTrackMinas GeraisSerra da Canastra National Park – (20°S, 46°15’ W)February 2001SavannaTrackMinas GeraisSerra da Canastra National Park – (20°S, 46°15’ W)March 2001GrasslandTrackMinas GeraisSerra da Canastra National Park – (20°S, 46°15’ W)March 2001SavannaTrackMinas GeraisSerra da Canastra National Park – (20°S, 46°15’ W)April 2001SavannaTrackMinas GeraisTO 050, Palmas – Tocantins(9°48’ S, 48°21’ W)May 2001SavannaRoad killSerra da Canastra National Park – (20°S, 46°15’ W)May 2001SavannaSightingMinas GeraisSerra da Canastra National Park – (20°S, 46°15’ W)May 2001SavannaTrackMinas GeraisSerra da Canastra National Park – (20°S, 46°15’ W)June 2001SavannaTrackMinas GeraisSerra da Canastra National Park – (20°S, 46°15’ W)July 2001GrasslandTrackMinas GeraisSerra da Canastra National Park – (20°S, 46°15’ W)July 2001SavannaTrackMinas GeraisBarreiras do Piauí – Piauí(10°08’ S, 45°46’ W)September 2001SavannaSkinBR 242, Arrarias – Tocantins(12°47’ S, 47°03’ W)March 2002SavannaRoad kill
+
+ 
+trees; “cerrado
+sensu stricto
+” – savanna with treesup to four meters, grass and bushes; “cerradão” –woodlands with low or none cover of grass) toforests (Eiten 1993). We recorded the Pampas Cat only in open areas(Table 1), as already cited by Silveira (1995), butit could be found both in natural areas, like opengrasslands (17.9%) and savanna (cerrado
+sensustricto
+– 57.1%) and in disturbed areas, such aspastures (3.6%) and agricultural fields (3.6%), orin edges of grasslands and agricultural fields(3.6%) and savanna and pastures (14.3%),demonstrating that this species is able to usehuman altered habitats. In Brazil, the PampasCat inhabits open areas, like the grasslands of thePampas, the marshy Pantanal, and specially thesavannas of the Cerrado biome (this study,Silveira 1995). However, in other range countrieswithin its distribution range it is found in a broader variety of habitats, from humid forests tohigh altitude semiarid scrub (Oliveira 1994).The diet is said to include primarily small rodentsand ground birds (Ihering 1892, Cabrera & Yepes 1960, Silva 1994, Romo 1995). Weobtained stomachs contents data from four roadkilled individuals. The first ingested two lizards, a Teiidae (fragments of 
+ Ameiva 
+sp. or
+Cnemi-dophorus 
+sp.) and a Tropiduridae (
+Tropidurus 
+sp.). The second stomach contained a tegu lizard(
+Tupinambis 
+sp.), a colubrid snake (unidenti-fied), and plant material (unidentified grass). Thethird contained a diurnal and crepuscular rodent(
+Cavia 
+sp.). The fourth contained a tinamous(
+Nothura 
+sp.) and fragments of an unidentifiedrodent and of beetles. Although predation onsmall caviomorph rodents (
+Cavia 
+genus) hadbeen previously recorded in anecdotal studies(Ihering 1892, Cabrera & Yepes 1960), as well asground dwelling birds, such as tinamous(Cabrera & Yepes 1960), consumption of reptilesis reported for the first time. All the preys record-ed in pampas cat stomachs in these study can beassociated to natural and human transformedhabitats.In relation to the activity time, three sightingswere at night (19:00, 20:00 and 22:00h), where-as four were in daytime (07:45, 08:00, 16:00and 18:00h), in agreement with the literature(Silveira 1995). Additionally, prey taken alsosuggests both nocturnal and diurnal activity pattern.Road kills represents a source of mortality formammals, especially carnivores (Vieira 1996,Rodrigues
+et al 
+. 2002), and seems to be animportant threat for pampas cat conservation. We recorded seven specimens of 
+O. colocolo
+killedin roads and other studies also recorded PampasCats road killed (Fischer 1997). Considering thatPampas Cat is a rare species in Brazil, road mor-tality may represent a strong impact for somepopulations. However, the primary threat toPampas Cat conservation should still be habitatdestruction. The species in Brazil is frequently associated to open habitats. The Emas NationalPark, where this species is commonly observed,the Grande Sertão Veredas National Park and theSerra da Canastra National Park are covered by large extensions of open grasslands and savanna habitats, representing though important areas forits conservation in Brazil. These open vegetationformations are becoming very scarce due tomachinery because agricultural expansion. Myers
+et al 
+. (2000) estimates that about 80% of theCerrado biome is already altered by human activ-ities. Although this species can cross human dis-turbed areas between natural fragments, probably it does not survive in landscapes dominated total-ly by pastures or agriculture fields. The conserva-tion of the pampas cat in Brazil depends on thepreservation and maintenance of natural grass-lands and other habitats that still exist in theCerrado biome.
+ Acknowledgements
+ We dedicate this paper to the memory of thefriend and field partner Marcelo Bagno, whorecently dead during field work. Guarino Colliand Ayrton Péres-Júnior identified of the reptil-ian material. G. Colli helped in the translation of the first version of the manuscript. TadeuG.Oliveira provided helpful comments on earlierversion of the manuscript and kindly suppliedunpublished data from zoo specimens.

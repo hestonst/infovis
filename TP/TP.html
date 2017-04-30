@@ -1,0 +1,153 @@
+<!-- https://bl.ocks.org/mbostock/3885211 -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Análisis lingüístico</title>
+    <script src="../d3.min.js"> </script>
+    <script src="academicNormalized.json"> </script>
+</head>
+
+<body>
+    <svg width="960" height="500"></svg>
+    <div class="btn-group">
+        <button type="button" id="one" onclick="drawGraph(1)" class="btn btn-primary">Internet Chat</button>
+        <button type="button" id="two" class="btn btn-primary">Academic Text</button>
+        <button type="button" id="three" class="btn btn-primary">Correspondence</button>
+    </div>
+</body>
+
+<script>
+
+
+var svg = d3.select("svg"),
+    margin = {top: 20, right: 20, bottom: 30, left: 50},
+    width = svg.attr("width") - margin.left - margin.right,
+    height = svg.attr("height") - margin.top - margin.bottom;
+
+var buttonBarWidth = d3.select("button#one")._groups[0][0].offsetWidth
+    + d3.select("button#one")._groups[0][0].offsetWidth
+    + d3.select("button#three")._groups[0][0].offsetWidth
+
+d3.select("div.btn-group").attr("style", "width:437px; position: relative; left: "
+    + (svg.attr('width')/2 - 437/2) + "px")
+
+var x = d3.scaleLinear().range([0, width]),
+    y = d3.scaleLinear().range([height, 0]),
+    z = d3.scaleOrdinal(d3.schemeCategory10);
+
+var stack = d3.stack();
+
+var area = d3.area()
+    .x(function(d, i) { return x(d.data.userId); })
+    .y0(function(d) { return y(d[0]); })
+    .y1(function(d) { return y(d[1]); })
+    .curve(d3.curveCatmullRom.alpha(0.7));
+
+var g = svg.append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+    g.append("g")
+    .attr("class", "axis axis--x")
+    .attr("transform", "translate(0," + height + ")")
+    .call(d3.axisBottom(x).ticks(0));
+
+    g.append("g")
+    .attr("class", "axis axis--y")
+    .call(d3.axisLeft(y).ticks(10, "%"));
+
+function drawGraph(selection) {
+    d3.tsv("data.tsv", type, function(error, data) {
+        if (error) throw error;
+
+        d3.selectAll("g.graph").remove();
+
+        var keys = data.columns.slice(1);
+
+        x.domain(d3.extent(data, function(d) { return d.userId; }));
+        z.domain(keys);
+        stack.keys(keys);
+
+        var layer = g.selectAll(".layer")
+        .data(stack(data))
+        .enter().append("g")
+        .attr("class", "layer");
+
+        layer.append("path")
+        .attr("class", "area")
+        .style("fill", function(d) { return z(d.key); })
+        .attr("d", area);
+
+        layer.filter(function(d) { return d[d.length - 1][1] - d[d.length - 1][0] > 0.01; })
+        .append("text")
+        .attr("x", width - 6)
+        .attr("y", function(d) { return y((d[d.length - 1][0] + d[d.length - 1][1]) / 2); })
+        .attr("dy", ".35em")
+        .style("font", "10px sans-serif")
+        .style("text-anchor", "end")
+        .text(function(d) { return d.key; });
+
+        h = svg.append("g").attr("class", "graph")
+            .on("mouseout", function() {
+                h.selectAll(".shader").attr("fill-opacity", "0");
+        });
+
+        h.selectAll(".shader")
+        .data(stack(data)).enter().append("rect")
+        .attr("x", function(d,i) {return (margin.left+i*width/stack(data).length)})
+        .attr("y", margin.top)
+        .attr("height", height)
+        .attr("class", "shader")
+        .attr("width", width / stack(data).length)
+        .style("fill", "white")
+        .attr("fill-opacity", "0")
+        .on("mouseover", function(d,i) {
+          d3.select(this).attr("class", "shaderSelected");
+          h.selectAll(".shader").transition().attr("fill-opacity", "0.4");})
+        .on("mouseout", function() {d3.select(this).attr("class", "shader");})
+        .on("click", drawDistribution);
+    });
+}
+
+d3.select("button#one").on("click", drawGraph(1));
+d3.select("button#two").on("click", drawGraph(2));
+d3.select("button#three").on("click", drawGraph(3));
+
+drawGraph(1);
+
+function drawDistribution(selection) {
+    // d3.tsv(str(selection) + "data.tsv", type, function(error, data))
+    d3.select(this).attr("class", "shader");
+    h.selectAll(".shader").remove();
+    d3.select("g.graph").append("rect").attr("class", "distribution")
+        .attr("width", width - (margin.left*2))
+        .attr("height", height - (margin.top*2))
+        .attr("x", margin.left*2)
+        .attr("y", margin.top*2)
+        .attr("fill", "white")
+        .attr("fill-opacity", "0")
+        .transition()
+            .attr("fill-opacity", "1")
+            .attr("style", "stroke:black");
+}
+
+
+// function drawDistribution(selection) {
+//     d3.tsv(str(selection) + "data.tsv", type, function(error, data)) {
+// }
+
+function type(d, i, columns) {
+    d.userId = i;
+    for (var i = 1, n = columns.length; i < n; ++i) d[columns[i]] = d[columns[i]] / 100;
+    return d;
+}
+
+
+
+</script>
+
+</html>

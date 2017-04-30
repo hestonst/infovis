@@ -1,0 +1,8 @@
+total_Count	627
+romance	{'French': 257, 'Italian': 5, 'Spanish': 1, 'Latin': 358}
+other_Count	47
+other	{'Mandarin': 1, 'Greek': 45, 'Turkish': 1, 'Chinese': 1}
+romance_Count	380
+germanic	{'Germanic': 4, 'Dutch': 3, 'Norse': 9, 'German': 6, 'Scandinavian': 1, 'Old English': 186}
+germanic_Count	200
+word_count_with_redundancies	5070

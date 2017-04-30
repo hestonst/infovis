@@ -2,37 +2,21 @@ from nltk import pos_tag, word_tokenize
 # download('all')
 import re
 import copy
+import DetectLanguage
 from html.entities import name2codepoint
 from dateutil.parser import parse as dateParse
-# adds support for parsing in 20 languages
+# adds support for parsing dates in 20 languages,
+#in case FB user-language has been changed
+from nltk.stem.lancaster import LancasterStemmer
+#resolves words to their most neutral form (undeclined, unconjugated)
 import csv
+from nltk import wordpunct_tokenize
+from nltk.corpus import stopwords
 
 names = ["Scott Heston", "Scoot Hestoon", "Thomas Heston"]
-releventWordClasses = ["RP","RB","NN","VB","FW","JJ","JJR","JJS","NNP","NNS","POS","RBR","RBS","VBD","VBG","VBN","VBP","VBZ" ]
-releventWordClassesList = [["RP",0],["RB",0],["NN",0],["VB",0],["FW",0],["JJ",0],["JJR",0],["JJS",0],["NNP",0],["NNS",0],["POS",0],["RBR",0],["RBS",0],["VBD",0],["VBG",0],["VBN",0],["VBP",0],["VBZ",0] ]
-
-# nltk.help.upenn_tagset():
-# FW -foreign word
-# JJ: adjective or numeral, ordinal
-# JJR: adjective, comparative
-# JJS: adjective, superlative
-# NNP: noun, proper, singular
-# NN: noun, common, singular or mass
-# NNS: noun, common, plural
-# RB: adverb
-# RBR: adverb, comparative
-# RBS: adverb, superlative
-# RP: particle
-
-
-# POS: genitive marker
-# VB: verb, base form
-# VBD: verb, past tense
-# VBG: verb, present participle or gerund
-# VBN: verb, past participle
-# VBP: verb, present tense, not 3rd person singular
-# VBZ: verb, present tense, 3rd person singular
-
+releventWordClasses = ["ENG_RP","ENG_RB","ENG_NN","ENG_VB","ENG_FW","ENG_JJ","ENG_JJR","ENG_JJS","ENG_NNP","ENG_NNS","ENG_POS","ENG_RBR","ENG_RBS","ENG_VBD","ENG_VBG","ENG_VBN","ENG_VBP","ENG_VBZ" ]
+releventWordClassesList = [["ENG_RP",0],["ENG_RB",0],["ENG_NN",0],["ENG_VB",0],["ENG_FW",0],["ENG_JJ",0],["ENG_JJR",0],["ENG_JJS",0],["ENG_NNP",0],["ENG_NNS",0],["ENG_POS",0],["ENG_RBR",0], ["ENG_RBS",0],["ENG_VBD",0],["ENG_VBG",0],["ENG_VBN",0],["ENG_VBP",0],["ENG_VBZ",0]]
+st = LancasterStemmer()
 
 def unescape(text):
     def fixup(m):
@@ -58,7 +42,7 @@ def unescape(text):
 
 
 
-filepath = "messages.htm"
+filepath = "input/messagesThomas.htm"
 file = open(filepath, "r")
 dom = file.read()
 dom = unescape(dom)
@@ -74,6 +58,9 @@ regex2 = re.compile('class="meta">[^<]*')
 regex3 = re.compile('<p>[^<]*')
 
 listOfMessages = list(filter(lambda subdom: (regex.findall(subdom)[0][47:] in names), listOfMessages))
+listOfMessages = list(filter(lambda message: (DetectLanguage.detect_language(message) != "english"), listOfMessages))
+
+
 
 def formatMessage(subDom):
     date = dateParse(regex2.findall(subDom)[0][13:]).date()
@@ -90,15 +77,18 @@ for entry in listOfMessages:
     if (str(entry["date"].day) + "-" + str(entry["date"].month) + "-" + str(entry["date"].year)) not in months:
         months[str(entry["date"].day) + "-" + str(entry["date"].month) + "-" + str(entry["date"].year)] = copy.deepcopy(releventWordClassesList)
     for word in entry["message"]:
+        # word = st(word)
+        if word[1] == "RP": # is particle
+            print(entry["message"])
         #one word can have multiple tags, but then will have multiple tuplets
-        if word[1] in releventWordClasses:
+        if ("ENG_" + word[1]) in releventWordClasses:
             for tup in months[str(entry["date"].day) + "-" + str(entry["date"].month) + "-" + str(entry["date"].year)]:
-                if tup[0] == word[1]:
+                if tup[0] == ("ENG_" + word[1]):
                     tup[1] = tup[1] + 1
 
 # print(months)
 
-filepath = "wordTagsByMonth.csv"
+filepath = "wordTagsByMonthThomas.csv"
 file = open(filepath, "w")
 with file as csvfile:
     spamwriter = csv.writer(csvfile, delimiter=',', quotechar='|', quoting=csv.QUOTE_MINIMAL)

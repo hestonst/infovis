@@ -1,0 +1,8 @@
+germanic	{'Old English': 57, 'German': 5, 'Dutch': 1, 'Norse': 4, 'Germanic': 4}
+germanic_Count	64
+other_Count	34
+romance	{'Italian': 6, 'Latin': 216, 'French': 164}
+other	{'Greek': 34}
+total_Count	333
+romance_Count	235
+word_count_with_redundancies	2124
