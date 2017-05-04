@@ -1,7 +1,0 @@
-romance_Count	571
-other	{'Urdu': 1, 'Persian': 3, 'Hindi': 3, 'Mandarin': 9, 'Russian': 3, 'Arabic': 8, 'Korean': 1, 'Japanese': 3, 'Greek': 64, 'Turkish': 1, 'Burmese': 2, 'Malay': 1, 'Chinese': 9}
-germanic_Count	526
-germanic	{'Saxon': 1, 'Old English': 443, 'Germanic': 34, 'Scandinavian': 7, 'Norse': 46, 'Flemish': 1, 'Gothic': 3, 'Dutch': 11, 'German': 45, 'Scots': 2}
-romance	{'Italian': 17, 'Portuguese': 1, 'Latin': 497, 'French': 410, 'Spanish': 5, 'Catalan': 1}
-other_Count	90
-total_Count	1187

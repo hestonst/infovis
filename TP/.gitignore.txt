@@ -1,0 +1,2 @@
+DataParse/Corpus
+DataParse/__pycache__

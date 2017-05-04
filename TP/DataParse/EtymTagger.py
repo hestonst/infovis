@@ -103,16 +103,18 @@ def produceReport(setOfWords):
         'romance': {'French': 1, 'Latin': 2}, 'romance_Count': 2,
         'other_Count': 1, 'other': {'Greek': 1}}
     """
-    cumulativeEtymologyCountDict = {'germanic_Count':0, 'romance_Count':0,
-        'other_Count':0,'germanic': {}, 'romance':{}, 'other':{}}
+    cumulativeEtymologyCountDict = {'germanic': {}, 'romance':{}, 'other':{},
+        'germanic_Count': 0, 'romance_Count':0, 'other_Count': 0}
 
     def countLanguages(languageGroup, word, individualEtymologyCountDict):
         if len(individualEtymologyCountDict[languageGroup]) > 0:
             cumulativeEtymologyCountDict[languageGroup + "_Count"] += 1
             for language in individualEtymologyCountDict[languageGroup]:
                 if language in cumulativeEtymologyCountDict[languageGroup]:
+                    print("2" + word)
                     cumulativeEtymologyCountDict[languageGroup][language] += 1
                 else:
+                    print("2" + word)
                     cumulativeEtymologyCountDict[languageGroup][language] = 1
 
     for word in setOfWords:

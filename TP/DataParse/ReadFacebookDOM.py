@@ -22,7 +22,6 @@ def readInfo(namesArray, filepath):
         message = regex2.findall(subDom)[0][3:]
         if (name in namesArray and DetectLanguage.detect_language(message) == "english"):
             releventMessages += [message]
-
     return releventMessages
 
 

@@ -1,6 +1,40 @@
 import EtymTagger
 from nltk import pos_tag, word_tokenize
 
+
+def readNPSChat(filePathOut):
+    """
+    Reads from the corpus of text developped by the US government
+    for online monitoring, available through the nltk library
+    Parameters:
+        filePathOut - the location to write output
+    """
+    from nltk.corpus import nps_chat
+    chatroom = nps_chat.posts()
+    wordList = []
+    for l in chatroom[1:4256]:
+        wordList += l
+    for l in chatroom[4259:]:
+        wordList += l
+    # los miembros 4257 y 4258 continen caracteres inválidos
+    messages = [" ".join(wordList)]
+    parseEtymologies(messages, filePathOut)
+
+def readFromNLTKCorpusNPSChat(category, filePathOut):
+    """
+    Reads from the corpus of text developped by the US government
+    for online monitoring, available through the nltk library
+    Parameters:
+        category - for example, "news", "learned"
+        see http://www.nltk.org/book/ch02.html
+        filePathOut - the location to write output
+    """
+    from nltk.corpus import brown
+    wordList = brown.words(categories=category)[1:5000]
+    parseEtymologies(wordList, filePathOut)
+
+
+
 def readFromFacebook(namesArray, filepathIn, filePathOut):
     """
     Reads from the htm output by facebook specified. Returns a list of strings
@@ -68,7 +102,6 @@ def parseEtymologies(listOfMessages, filePathOut):
 
     etymologyDict = EtymTagger.produceReport(setOfWords)
 
-
     # # read python dict back from the file
     # pkl_file = open('myfile.pkl', 'rb')
     # mydict2 = pickle.load(pkl_file)
@@ -80,5 +113,13 @@ def parseEtymologies(listOfMessages, filePathOut):
     outFile.write("word_count_with_redundancies" + "\t" \
         + str(wordCountInOriginalDocument))
 
+# readFromNLTKCorpusNPSChat("learned","outputLimited.txt")
 
-readFromTXT('input/Academic/English.txt','erase.txt')
+# readFromTXT("input/InternetChat/germanFBmessages.txt","output/InternetChats/germanInternetChat.txt")
+readFromTXT("input/Academic/Chinese.txt","output/Academic/Chinese.txt")
+
+
+# readFromFacebook(["Thomas Heston"],'input/InternetChat/messagesThomas.htm','output/InternetChats/casualChatUserData.txt')
+
+# readNPSChat("npsChat.txt")
+# readFromFacebook(["Scott Heston", "Scoot Hestoon", "Thomas Heston"],'input/internetChat/messagesThomas.htm','output/InternetChats/casualChatPersonal.txt')

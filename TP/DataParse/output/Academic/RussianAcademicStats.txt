@@ -1,8 +1,0 @@
-romance_Count	376
-total_Count	552
-germanic	{'Scandinavian': 1, 'Norse': 14, 'Dutch': 3, 'Flemish': 1, 'German': 9, 'Germanic': 8, 'Old English': 110}
-other_Count	47
-other	{'Arabic': 3, 'Greek': 46}
-germanic_Count	129
-romance	{'Latin': 342, 'French': 252, 'Italian': 13}
-word_count_with_redundancies	4754
